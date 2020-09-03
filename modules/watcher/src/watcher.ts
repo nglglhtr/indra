@@ -1003,6 +1003,7 @@ export class Watcher implements IWatcher {
     chainId: number,
     multisigAddress: string,
   ): Promise<providers.TransactionResponse | string> => {
+    this.log.info(`Sending transaction to ${transaction.to}`);
     if (this.transactionService) {
       const response = await this.transactionService.sendTransaction(
         transaction,
@@ -1083,6 +1084,7 @@ export class Watcher implements IWatcher {
     app: AppInstanceJson,
     challenge: StoredAppChallenge,
   ): Promise<boolean> => {
+    this.log.info(`canPlayAction activated`);
     // make sure the app has an action
     if (!app.latestAction) {
       return false;
